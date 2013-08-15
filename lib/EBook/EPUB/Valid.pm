@@ -9,10 +9,10 @@ use File::ShareDir ();
 use IPC::Run3;
 
 our $VERSION   = '0.01';
-our @EXPORT    = qw(is_valid_epub);
+our @EXPORT    = qw(validate_epub);
 our @EXPORT_OK = qw();
 
-sub is_valid_epub
+sub validate_epub
 {
     my ($jar, $epub);
 
@@ -49,7 +49,7 @@ EBook::EPUB::Valid - perl wrapper for EpubCheck
 =head1 SYNOPSIS
 
   use EBook::EPUB::Valid;
-  my ($is_valid, $out) = is_valid_epub('/path/to/file.epub');
+  my ($is_valid, $out) = validate_epub('/path/to/file.epub');
 
 =head2 Command Line Interface
 
@@ -62,7 +62,7 @@ EpubCheck is a tool to validate IDPF EPUB files.
 
 =head1 SUBROUTINES
 
-=head2 is_valid_epub( [ $path_to_epubcheck_jar ], $path_to_epub_file )
+=head2 ($is_valid, $out) = validate_epub( [ $path_to_epubcheck_jar ], $path_to_epub_file )
 
 Validates $path_to_epub_file by using $path_to_epubcheck_jar.
 If $path_to_epubcheck_jar is omitted, bundled 'epubcheck-3.0.1.jar' is used.
