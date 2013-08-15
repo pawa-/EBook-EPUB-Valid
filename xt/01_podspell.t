@@ -8,3 +8,5 @@ __DATA__
 pawa
 pawapawa@cpan.org
 EBook::EPUB::Valid
+EpubCheck
+IDPF
