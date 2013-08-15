@@ -49,7 +49,7 @@ EBook::EPUB::Valid - perl wrapper for EpubCheck
 =head1 SYNOPSIS
 
   use EBook::EPUB::Valid;
-  my ($is_valid, $out) = $is_valid_epub('/path/to/file.epub');
+  my ($is_valid, $out) = is_valid_epub('/path/to/file.epub');
 
 =head2 Command Line Interface
 
