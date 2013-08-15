@@ -1,27 +1,23 @@
-This is Perl module EBook::EPUB::Valid.
+NAME
+    EBook::EPUB::Valid - perl wrapper for EpubCheck
 
-INSTALLATION
+SYNOPSIS
+      use EBook::EPUB::Valid;
 
-EBook::EPUB::Valid installation is straightforward. If your CPAN shell is set up,
-you should just be able to do
+  Command Line Interface
+      epubcheck [epubcheck-x.x.x.jar] file.epub
 
-    % cpan EBook::EPUB::Valid
+DESCRIPTION
+    EBook::EPUB::Valid is a perl wrapper for EpubCheck. EpubCheck is a tool
+    to validate IDPF EPUB files.
 
-Download it, unpack it, then build it as per the usual:
+AUTHOR
+    pawa <pawapawa@cpan.org>
 
-    % perl Makefile.PL
-    % make && make test
+SEE ALSO
+    https://code.google.com/p/epubcheck/
 
-Then install it:
+LICENSE
+    This library is free software; you can redistribute it and/or modify it
+    under the same terms as Perl itself.
 
-    % make install
-
-DOCUMENTATION
-
-EBook::EPUB::Valid documentation is available as in POD. So you can do:
-
-    % perldoc EBook::EPUB::Valid
-
-to read the documentation online with your favorite pager.
-
-pawa
