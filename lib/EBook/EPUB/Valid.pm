@@ -8,7 +8,7 @@ use Exporter qw/import/;
 use File::ShareDir ();
 use IPC::Run3;
 
-our $VERSION   = '0.01';
+our $VERSION   = '0.02';
 our @EXPORT    = qw(validate_epub);
 our @EXPORT_OK = qw();
 

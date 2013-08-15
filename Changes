@@ -1,4 +1,7 @@
 Revision history for Perl extension EBook::EPUB::Valid
 
+0.02    Thu, 15 Aug 2013 21:02:09 +0900
+        - rename is_valid_epub() to validate_epub()
+
 0.01    Thu, 15 Aug 2013 19:08:53 +0900
         - original version
