@@ -3,6 +3,7 @@ NAME
 
 SYNOPSIS
       use EBook::EPUB::Valid;
+      my ($is_valid, $out) = is_valid_epub('/path/to/file.epub');
 
   Command Line Interface
       epubcheck [epubcheck-x.x.x.jar] file.epub
@@ -10,6 +11,12 @@ SYNOPSIS
 DESCRIPTION
     EBook::EPUB::Valid is a perl wrapper for EpubCheck. EpubCheck is a tool
     to validate IDPF EPUB files.
+
+SUBROUTINES
+  is_valid_epub( [ $path_to_epubcheck_jar ], $path_to_epub_file )
+    Validates $path_to_epub_file by using $path_to_epubcheck_jar. If
+    $path_to_epubcheck_jar is omitted, bundled 'epubcheck-3.0.1.jar' is
+    used.
 
 AUTHOR
     pawa <pawapawa@cpan.org>
