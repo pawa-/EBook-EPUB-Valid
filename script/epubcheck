@@ -2,14 +2,14 @@
 
 use strict;
 use warnings;
-use File::ShareDir qw();
+use File::ShareDir ();
 
 my ($jar, $epub);
 
 if (scalar @ARGV == 1)
 {
-    my $epubcheck = "epubcheck-3.0.1/epubcheck.3.0.1.jar";
-    $jar  = File::ShareDir::module_file("EBook::EPUB::Valid", $epubcheck);
+    my $epubcheck = 'epubcheck-3.0.1/epubcheck.3.0.1.jar';
+    $jar  = File::ShareDir::module_file('EBook::EPUB::Valid', $epubcheck);
     $epub = $ARGV[0];
 }
 elsif (scalar @ARGV == 2)
@@ -25,4 +25,4 @@ else
 if ( ! -e $jar  ) { print "jar file not found\n";  exit(1); }
 if ( ! -e $epub ) { print "epub file not found\n"; exit(1); }
 
-system("java $jar $epub");
+system('java', '-jar', $jar, $epub);
