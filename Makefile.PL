@@ -5,6 +5,7 @@ all_from 'lib/EBook/EPUB/Valid.pm';
 
 requires      'Carp';
 requires      'File::ShareDir';
+requires      'IPC::Run3';
 test_requires 'Test::More' => 0.88; # done_testing
 
 readme_from 'lib/EBook/EPUB/Valid.pm';
