@@ -6,10 +6,11 @@ use warnings;
 use Carp ();
 use Exporter qw/import/;
 use File::ShareDir ();
+use IPC::Run3;
 
 our $VERSION   = '0.01';
-our @EXPORT    = qw();
-our @EXPORT_OK = qw(is_valid_epub);
+our @EXPORT    = qw(is_valid_epub);
+our @EXPORT_OK = qw();
 
 sub is_valid_epub
 {
@@ -17,7 +18,7 @@ sub is_valid_epub
 
     if (scalar @_ == 1)
     {
-        $jar  = File::ShareDir::module_file(__PACKAGE__, 'epubcheck-3.0.1/epubcheck.3.0.1.jar');
+        $jar  = File::ShareDir::dist_file('EBook-EPUB-Valid', 'epubcheck-3.0.1/epubcheck-3.0.1.jar');
         $epub = shift;
     }
     else { ($jar, $epub) = @_; }
@@ -25,9 +26,12 @@ sub is_valid_epub
     return (0, 'jar file not found')  unless -e $jar;
     return (0, 'epub file not found') unless -e $epub;
 
-    open(my $fh, '|-', 'java', '-jar', $jar, $epub) or return (0, $!);
-    my $out = do { local $/; <$fh> };
-    close($fh);
+    my ($in, $out, $err);
+    my @cmd = ('java', '-jar', $jar, $epub);
+
+    run3 \@cmd, \$in, \$out, \$err;
+
+    $out .= $err;
 
     my $is_valid = ($out =~ /No errors or warnings detected/i) ? 1 : 0;
 
@@ -45,6 +49,7 @@ EBook::EPUB::Valid - perl wrapper for EpubCheck
 =head1 SYNOPSIS
 
   use EBook::EPUB::Valid;
+  my ($is_valid, $out) = $is_valid_epub('/path/to/file.epub');
 
 =head2 Command Line Interface
 
@@ -54,6 +59,13 @@ EBook::EPUB::Valid - perl wrapper for EpubCheck
 
 EBook::EPUB::Valid is a perl wrapper for EpubCheck.
 EpubCheck is a tool to validate IDPF EPUB files.
+
+=head1 SUBROUTINES
+
+=head2 is_valid_epub( [ $path_to_epubcheck_jar ], $path_to_epub_file )
+
+Validates $path_to_epub_file by using $path_to_epubcheck_jar.
+If $path_to_epubcheck_jar is omitted, bundled 'epubcheck-3.0.1.jar' is used.
 
 =head1 AUTHOR
 
